@@ -41,6 +41,7 @@ For a workshop please delete the following block until the next dashed-line
   Assign first row in data file as info to access workshop data
 {% endcomment %}
 {% assign info = site.data.data[0] %}
+{% assign ds_parallel = site.ds_parallel_description %}
 
 <div class="alert alert-danger">
 This is the workshop template. Delete these lines and use it to
@@ -117,6 +118,10 @@ the pitch.
 {% include dc/intro.html %}
 {% elsif info.carpentry == "lc" %}
 {% include lc/intro.html %}
+{% elsif info.carpentry == "ds" %} 
+{% if info.curriculum == "ds-parallel" %}
+{% remote_include ds_parallel%}
+{% endif %}
 {% endif %}
 
 {% comment %}
@@ -198,6 +203,9 @@ Modify the block below if there are any special requirements.
     Participants must have access to a computer with a
     Mac, Linux, or Windows operating system (not a tablet, Chromebook, etc.) that they have administrative privileges on.
   {% endif %}
+</p>
+<p>
+ 
   They should have a few specific software packages installed (listed <a href="#setup">below</a>).
 </p>
 
